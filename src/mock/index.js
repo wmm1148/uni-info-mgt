@@ -1,5 +1,5 @@
 // import Mock from 'mockjs'
-import Mock from 'router-Mock'
+import Mock from 'router-mock'
 import api from '../api.js'
 
 const list = [
@@ -132,13 +132,20 @@ Mock.get('/get/student/list', () => {
   console.log(2222)
   // const result = list.slice((page - 1) * limit, page * limit)
   // const res = list.find((item) => item.id === (page + size));
-  return {
-    code: 0,
+  return Promise.resolve({
+    code: 1,
     data: {
       list,
       total: list.length
     }
-  }
+  })
+  // return {
+  //   code: 0,
+  //   data: {
+  //     list,
+  //     total: list.length
+  //   }
+  // }
 })
 
 Mock.get(api.getStudentById.url, (id) => {

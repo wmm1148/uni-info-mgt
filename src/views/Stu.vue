@@ -88,8 +88,9 @@ export default {
   methods: {
     fetchStudentList () {
       api.getStudentList().then((res) => {
+        console.log('stu res', res)
         // this.pagination.total = res.total;
-        this.list = res.list
+        // this.list = res.list
         // this.$router.push('list');
       }).catch((err) => {
         console.log(err)
