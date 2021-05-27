@@ -13,27 +13,27 @@ export function request (config) {
   // }, err => {
   //   console.log('request err:', err)
   // })
-  instance.interceptors.response.use(res => {
-    console.log('response', res)
-    // 也可以设置取消函数 防止重复请求
-    // 相同请求不得在600毫秒内重复发送，反之继续执行
-    // setTimeout(() => {
-    //   requestList.delete(response.config.url)
-    // }, 600)
+  // instance.interceptors.response.use(res => {
+  //   console.log('response', res)
+  // 也可以设置取消函数 防止重复请求
+  // 相同请求不得在600毫秒内重复发送，反之继续执行
+  // setTimeout(() => {
+  //   requestList.delete(response.config.url)
+  // }, 600)
 
-    return res?.data // return res.data即可
-  }, err => {
-    console.log(err)
-  })
+  //   return res?.data // return res.data即可
+  // }, err => {
+  //   console.log(err)
+  // })
 
   // 3.发送请求
-  // return () => new Promise((resolve, reject) => {
-  //   instance(config).then(res => {
-  //     resolve(res?.data?.data)
-  //   }).catch(err => {
-  //     reject(err)
-  //   })
-  // })
-  return () => instance(config)
+  return () => new Promise((resolve, reject) => {
+    instance(config).then(res => {
+      resolve(res?.data?.data)
+    }).catch(err => {
+      reject(err)
+    })
+  })
+  // return () => instance(config)
   // instance是Promise，在用的时候直接.then .catch就行
 }

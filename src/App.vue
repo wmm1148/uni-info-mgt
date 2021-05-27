@@ -16,7 +16,7 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 20px;
   background: #2c3e50;
 
   a {
