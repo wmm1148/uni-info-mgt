@@ -3,10 +3,11 @@
     <a-layout class="stu-layout">
       <a-layout-sider width="200" style="background: #fff">
         <a-menu
+          class="menuStyle"
           mode="inline"
           :default-selected-keys="['1']"
           :default-open-keys="['sub1']"
-          :style="{ height: '100%', borderRight: 0 }"
+          :style="menuStyle"
           @click="handleClick"
         >
           <a-sub-menu key="sub1" @titleClick="titleClick">
@@ -147,7 +148,8 @@ export default {
     return {
       formItemSpan: 4,
       list: [],
-      columns
+      columns,
+      menuStyle: { height: '100%', borderRight: 0 }
       // pagination: {},
     }
   },
@@ -208,5 +210,8 @@ export default {
 }
 .ant-col {
   padding: 0 16px 16px 16px;
+}
+.menuStyle {
+  text-align: left;
 }
 </style>
